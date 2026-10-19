@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水韵江苏</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; }
+        #mapContainer {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- 地图容器：必须先存在，JS 才能拿到它 -->
+    <div id="mapContainer"></div>
+
+    <!-- 高德 JS API 2.0 安全密钥：2021-12-02 之后申请的 key 必填，否则 restapi 服务（含可视化发布接口）会被 CORS 拦截 -->
+    <!-- 控制台 console.amap.com → 应用管理 → 你的 key → 查看「安全密钥 securityJsCode」，替换下面引号里的内容 -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: 'b553e00cf0b4d3aedb1d652c777f77cc'
+        };
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=a5b3ca6ca9d476f982256726ac961d53&plugin=AMap.Visual"></script>
+    <script type="text/javascript">
+        // 等高德地图脚本加载完成后初始化
+        window.onload = function () {
+            var map = new AMap.Map('mapContainer', {
+                zoom: 12,
+                center: [118.796643,32.059345]
+            });
+            var visual = new AMap.Visual('amap://visual/12c93cc3cf7edfb4be26cc8c069f706d', map);
+        };
+    </script>
+</body>
+</html>
